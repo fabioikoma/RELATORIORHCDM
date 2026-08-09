@@ -37,10 +37,6 @@ h1{font-size:17px;font-weight:800}
 .kpi.active{background:var(--surface2);border-color:var(--kc)}
 .kpi .n{font-size:23px;font-weight:800;color:var(--kc)}
 .kpi .l{font-size:10.5px;color:var(--muted);font-weight:700;letter-spacing:.4px;text-transform:uppercase;margin-top:2px}
-.units{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
-.tab{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:8px 17px;font-size:13px;font-weight:700;color:var(--muted);cursor:pointer;display:flex;gap:8px;align-items:center}
-.tab .cnt{background:var(--surface2);border-radius:10px;padding:1px 8px;font-size:11px}
-.tab.active{color:#fff;border-color:var(--brand);background:#261423}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:10px}
 .card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:13px 15px;transition:.15s;border-left:4px solid var(--cc,var(--line))}
 .chead{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:7px}
@@ -61,9 +57,6 @@ h1{font-size:17px;font-weight:800}
 .gbody p,.gbody li{font-size:12.5px;line-height:1.65;color:var(--text)}
 .gbody li{margin-left:18px;margin-bottom:5px}
 .gbody .lei{color:var(--verbal);font-weight:700}
-.model{background:#10141c;border:1px dashed var(--line);border-radius:10px;padding:12px 14px;font-size:12px;color:#c9d4e3;white-space:pre-wrap;font-family:ui-monospace,Menlo,monospace;margin:8px 0;position:relative}
-.copybtn{position:absolute;top:8px;right:8px;background:var(--surface2);border:1px solid var(--line);color:var(--muted);border-radius:7px;padding:4px 10px;font-size:11px;cursor:pointer}
-.copybtn:hover{color:#fff;border-color:var(--brand)}
 .steps{counter-reset:st}
 .steps li{list-style:none;margin-left:0;padding-left:34px;position:relative;margin-bottom:8px}
 .steps li::before{counter-increment:st;content:counter(st);position:absolute;left:0;top:0;width:22px;height:22px;border-radius:50%;background:var(--brand);color:#fff;font-size:11px;font-weight:800;display:grid;place-items:center}
@@ -98,6 +91,7 @@ h1{font-size:17px;font-weight:800}
 <div class="views">
   <button class="view active" id="vday" onclick="setView('day')">📅 Dia</button>
   <button class="view" id="vguia" onclick="setView('guia')">📖 Guia — o que fazer</button>
+  <a class="view" href="escala.html?loja=S%C3%A3o%20Braz" style="text-decoration:none">📋 Escala</a>
 </div>
 <div class="toolbar" id="toolbar">
   <div class="datenav" id="datenav">
@@ -195,7 +189,7 @@ function renderGuia(){
 <div class="gcard"><div class="ghead" style="background:var(--atest)" onclick="this.parentElement.classList.toggle('open')">🩺 Atestado <span class="gtag">como agir</span></div>
 <div class="gbody"><ol class="steps"><li>Receba, fotografe e mande pro RH no mesmo dia (eles conferem CRM/assinatura).</li><li>Atestado válido abona — não conte como falta.</li><li>Esther: atestado até 09/08, retorno previsto 10/08 no horário 10:15–16:40.</li></ol></div></div>
 <div class="gcard"><div class="ghead" style="background:var(--conf)" onclick="this.parentElement.classList.toggle('open')">🔎 "Conferir" no painel <span class="gtag">rotina</span></div>
-<div class="gbody"><ol class="steps"><li>Bateu diferente do combinado (15:40–00:00)? Me confirme a escala real do dia.</li><li>Vinicius em escala diferente: sempre informar a diretoria qual turno ele fez.</li><li>Rotina: abrir o painel de manhã, olhar os cards coloridos e responder o RH.</li></ol></div></div>`;
+<div class="gbody"><ol class="steps"><li>Bateu diferente do combinado (15:40–00:00)? Me confirme a escala real do dia.</li><li>Vinicius em escala diferente: sempre informar a diretoria qual turno ele fez.</li><li>Rotina: abrir o painel de manhã, olhar os cards, responder o RH e <b>lançar a escala de posições na aba "📋 Escala"</b>.</li></ol></div></div>`;
 }
 if('serviceWorker' in navigator)navigator.serviceWorker.register('sw.js').catch(()=>{});
 function askNotif(){
