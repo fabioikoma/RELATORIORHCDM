@@ -1,0 +1,11 @@
+{
+  "name": "Ponto São Braz — Cidadão do Mundo",
+  "short_name": "Ponto SB",
+  "start_url": "./saobraz.html",
+  "display": "standalone",
+  "background_color": "#0b0e14",
+  "theme_color": "#e6007e",
+  "icons": [
+    {"src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any"}
+  ]
+}
