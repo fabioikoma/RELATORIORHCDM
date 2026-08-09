@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ponto São Braz · Cidadão do Mundo</title>
+<link rel="manifest" href="manifest-sb.webmanifest">
+<link rel="icon" href="icon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="icon.svg">
+<meta name="theme-color" content="#e6007e">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<style>
+:root{--brand:#e6007e;--bg:#0b0e14;--surface:#141922;--surface2:#1b2230;--line:#242d3d;--text:#e8edf4;--muted:#8b95a5;
+--serio:#e05252;--grave:#e8833a;--infra:#d4b43a;--verbal:#4a90d9;--conf:#6b7686;--sem:#37b46c;
+--adv:#c0392b;--atest:#8e6bc9;--folga:#3aa6a0;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:-apple-system,'Segoe UI',Roboto,sans-serif;padding:18px;max-width:1240px;margin:0 auto;font-size:14px}
+header{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;padding-bottom:14px;border-bottom:2px solid var(--brand);margin-bottom:14px}
+.brand{display:flex;align-items:center;gap:12px}
+.logo{width:42px;height:42px;border-radius:10px;background:linear-gradient(135deg,var(--brand),#8b1a5e);display:grid;place-items:center;font-weight:800;font-size:15px;color:#fff}
+h1{font-size:17px;font-weight:800}
+.sub{color:var(--muted);font-size:12px;margin-top:2px}
+.hright{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.live{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--sem);font-weight:700}
+.pulse{width:8px;height:8px;border-radius:50%;background:var(--sem);animation:pl 1.8s infinite}
+@keyframes pl{50%{opacity:.25}}
+.btn{background:var(--surface2);border:1px solid var(--line);color:var(--text);border-radius:9px;padding:8px 14px;font-size:12.5px;cursor:pointer;font-weight:600;transition:.15s}
+.btn:hover{border-color:var(--brand)}
+.views{display:flex;gap:6px;background:var(--surface);border:1px solid var(--line);border-radius:11px;padding:4px;width:max-content;margin-bottom:14px;flex-wrap:wrap}
+.view{border:none;background:none;color:var(--muted);font-weight:700;font-size:13px;padding:8px 16px;border-radius:8px;cursor:pointer}
+.view.active{background:var(--brand);color:#fff}
+.toolbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:14px}
+.datenav{display:flex;align-items:center;gap:6px;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:4px}
+.datenav button{background:none;border:none;color:var(--text);font-size:16px;cursor:pointer;padding:6px 10px;border-radius:7px}
+.datenav button:hover{background:var(--surface2)}
+.datenav .cur{font-weight:800;font-size:13px;padding:0 8px;min-width:180px;text-align:center}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin-bottom:14px}
+.kpi{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:13px 15px;cursor:pointer;transition:.15s;border-left:4px solid var(--kc,var(--line))}
+.kpi:hover{border-color:var(--kc)}
+.kpi.active{background:var(--surface2);border-color:var(--kc)}
+.kpi .n{font-size:23px;font-weight:800;color:var(--kc)}
+.kpi .l{font-size:10.5px;color:var(--muted);font-weight:700;letter-spacing:.4px;text-transform:uppercase;margin-top:2px}
+.units{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.tab{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:8px 17px;font-size:13px;font-weight:700;color:var(--muted);cursor:pointer;display:flex;gap:8px;align-items:center}
+.tab .cnt{background:var(--surface2);border-radius:10px;padding:1px 8px;font-size:11px}
+.tab.active{color:#fff;border-color:var(--brand);background:#261423}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:10px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:13px 15px;transition:.15s;border-left:4px solid var(--cc,var(--line))}
+.chead{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:7px}
+.cname{font-weight:700;font-size:13.5px}
+.cunit{color:var(--muted);font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.4px}
+.badge{border-radius:7px;padding:4px 9px;font-size:10.5px;font-weight:800;color:#fff;white-space:nowrap;background:var(--cc)}
+.mk{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12.5px;color:#b6c2d4;margin:5px 0 3px}
+.jr{font-size:11px;color:var(--muted)}
+.det{font-size:11.5px;color:#d3b544;margin-top:5px}
+.acao{font-size:11.5px;color:#7ec8a3;margin-top:5px;background:#12241933;border-left:2px solid var(--sem);padding:4px 8px;border-radius:0 6px 6px 0}
+.rkexpl{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 16px;font-size:12px;color:var(--muted);margin-bottom:14px;line-height:1.6}
+.gcard{background:var(--surface);border:1px solid var(--line);border-radius:12px;margin-bottom:12px;overflow:hidden}
+.ghead{padding:12px 16px;font-weight:800;font-size:13.5px;color:#fff;display:flex;align-items:center;gap:10px;cursor:pointer}
+.ghead .gtag{font-size:10px;background:rgba(0,0,0,.25);border-radius:6px;padding:2px 8px;font-weight:700}
+.gbody{padding:14px 18px;display:none}
+.gcard.open .gbody{display:block}
+.gbody h5{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin:10px 0 6px}
+.gbody p,.gbody li{font-size:12.5px;line-height:1.65;color:var(--text)}
+.gbody li{margin-left:18px;margin-bottom:5px}
+.gbody .lei{color:var(--verbal);font-weight:700}
+.model{background:#10141c;border:1px dashed var(--line);border-radius:10px;padding:12px 14px;font-size:12px;color:#c9d4e3;white-space:pre-wrap;font-family:ui-monospace,Menlo,monospace;margin:8px 0;position:relative}
+.copybtn{position:absolute;top:8px;right:8px;background:var(--surface2);border:1px solid var(--line);color:var(--muted);border-radius:7px;padding:4px 10px;font-size:11px;cursor:pointer}
+.copybtn:hover{color:#fff;border-color:var(--brand)}
+.steps{counter-reset:st}
+.steps li{list-style:none;margin-left:0;padding-left:34px;position:relative;margin-bottom:8px}
+.steps li::before{counter-increment:st;content:counter(st);position:absolute;left:0;top:0;width:22px;height:22px;border-radius:50%;background:var(--brand);color:#fff;font-size:11px;font-weight:800;display:grid;place-items:center}
+.loading{text-align:center;color:var(--muted);padding:60px 0}
+.err{color:#f85149;padding:14px;border:1px solid #f85149;border-radius:10px;margin:12px 0}
+.empty{text-align:center;color:var(--muted);padding:40px 0}
+#gate{position:fixed;inset:0;background:var(--bg);z-index:100;display:flex;align-items:center;justify-content:center}
+.gatebox{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:34px;width:340px;text-align:center}
+.gatebox input{width:100%;background:var(--surface2);border:1px solid var(--line);border-radius:10px;padding:11px 14px;color:var(--text);font-size:14px;outline:none;margin:14px 0 10px;text-align:center}
+.gatebox button{width:100%;background:var(--brand);border:none;color:#fff;border-radius:10px;padding:11px;font-size:14px;font-weight:700;cursor:pointer}
+.gerr{color:#f85149;font-size:12px;min-height:16px;margin-top:8px}
+@media(max-width:760px){.grid{grid-template-columns:1fr}}
+</style></head><body>
+<div id="gate"><div class="gatebox">
+  <div class="logo" style="margin:0 auto 12px">SB</div>
+  <h1>Ponto São Braz · Gestor</h1>
+  <div class="sub">Painel restrito — digite a senha</div>
+  <input type="password" id="gpw" placeholder="Senha" onkeydown="if(event.key==='Enter')gateTry()">
+  <button onclick="gateTry()">Entrar</button>
+  <div class="gerr" id="gerr"></div>
+</div></div>
+<header>
+  <div class="brand"><div class="logo">SB</div>
+    <div><h1>Ponto São Braz — Painel do Gestor</h1><div class="sub" id="sub">carregando…</div></div>
+  </div>
+  <div class="hright">
+    <div class="live"><span class="pulse"></span>ao vivo</div>
+    <button class="btn" onclick="loadAll()">↻ Atualizar</button>
+    <button class="btn" id="bellbtn" onclick="askNotif()">🔔 Ativar avisos</button>
+  </div>
+</header>
+<div class="views">
+  <button class="view active" id="vday" onclick="setView('day')">📅 Dia</button>
+  <button class="view" id="vguia" onclick="setView('guia')">📖 Guia — o que fazer</button>
+</div>
+<div class="toolbar" id="toolbar">
+  <div class="datenav" id="datenav">
+    <button onclick="stepDay(-1)">‹</button>
+    <div class="cur" id="curday">—</div>
+    <button onclick="stepDay(1)">›</button>
+  </div>
+</div>
+<div class="kpis" id="kpis"></div>
+<div id="content"><div class="loading">Conectando…</div></div>
+<script>
+const SB='https://kqvoatdprjwxyadhvtdd.supabase.co/rest/v1/';
+const KEY='sb_publishable_tp_dgwYNsZZOC3uNYTuybw_mUDNHEmV';
+const H={apikey:KEY,Authorization:'Bearer '+KEY};
+const GATE_HASH='bc54706ad12e7654b56e3b7468768d3c9a3b98459a95b8c465a47fed979ed792';
+async function sha(t){const b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(t));return [...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,'0')).join('')}
+async function gateTry(){const v=document.getElementById('gpw').value;
+  if(await sha(v)===GATE_HASH){sessionStorage.setItem('cm_sb_ok','1');document.getElementById('gate').style.display='none'}
+  else document.getElementById('gerr').textContent='Senha incorreta.'}
+if(sessionStorage.getItem('cm_sb_ok')==='1')document.getElementById('gate').style.display='none';
+const ORD={SERIO:0,GRAVE:1,INFRACAO:2,VERBAL:3,ESCALA:4,JORNADA:5,VERIFICAR:6,SEM:7};
+const C={SERIO:'var(--serio)',GRAVE:'var(--grave)',INFRACAO:'var(--infra)',VERBAL:'var(--verbal)',ESCALA:'var(--conf)',JORNADA:'var(--conf)',VERIFICAR:'var(--conf)',SEM:'var(--sem)'};
+const L={SERIO:'🔴 SÉRIO',GRAVE:'🟠 GRAVE',INFRACAO:'🟡 FALTA DE BATIDA',VERBAL:'🔵 ORIENTAÇÃO',ESCALA:'🔎 CONFERIR',JORNADA:'🔎 CONFERIR',VERIFICAR:'🔎 VERIFICAR',SEM:'✅ OK'};
+const KL={TOTAL:'Funcionários',SERIO:'Sério',GRAVE:'Grave',INFRACAO:'Falta de batida',VERBAL:'Orientação',CONFERIR:'Conferir',SEM:'Sem ocorrência'};
+const ACAO={
+SERIO:'GESTOR: garantir a pausa completa da equipe e avisar o RH — política da empresa: intervalo suprimido é falta GRAVE, gera advertência formal assinada já na 1ª vez.',
+GRAVE:'GESTOR: confirmar se você autorizou a extra. Se não autorizou, orientar o funcionário que o horário de saída deve ser respeitado — e avisar o RH.',
+INFRACAO:'GESTOR: confirmar o horário real trabalhado e avisar o RH para ajustar a marcação no Flash. Reincidência gera advertência.',
+VERBAL:'GESTOR: orientar verbalmente sobre o intervalo e comunicar o RH para registro.',
+ESCALA:'GESTOR: informar ao RH qual foi a escala real do dia. Se o horário mudou de vez, pedir atualização do cadastro à diretoria.',
+JORNADA:'GESTOR: pedir à diretoria a definição do horário oficial deste funcionário.',
+VERIFICAR:'GESTOR: sem marcações — confirmar se é folga/férias/atestado; se for falta, avisar o RH no mesmo dia.'};
+let ALL=[],DAYS=[],DI=0,FILT=null,VIEW='day';
+const $=id=>document.getElementById(id);
+const fmt=m=>m==null?'—':Math.floor(m/60)+'h'+String(m%60).padStart(2,'0');
+const title=n=>n.split(' ').map(w=>w.charAt(0)+w.slice(1).toLowerCase()).join(' ');
+const br=d=>{const[y,m,dd]=d.split('-');return dd+'/'+m+'/'+y};
+const isConf=c=>['ESCALA','JORNADA','VERIFICAR'].includes(c);
+async function loadAll(){
+  $('content').innerHTML='<div class="loading">Carregando…</div>';
+  try{
+    const cutoff=new Date(Date.now()-7*864e5).toISOString().slice(0,10);
+    ALL=await fetch(SB+'fato_espelho_dia?ativo=eq.true&unidade=eq.S%C3%A3o%20Braz&data=gte.'+cutoff+'&select=nome,unidade,data,dia_semana,categoria,marcacoes_txt,jornada_liquida_min,intervalo_real_min,jornada_contratada_min,extra_min,detalhe&order=data.asc',{headers:H}).then(r=>r.json());
+    DAYS=[...new Set(ALL.map(r=>r.data))].sort();
+    DI=DAYS.length-1;
+    $('sub').textContent='São Braz · últimos '+DAYS.length+' dias úteis · atualizado '+new Date().toLocaleTimeString('pt-BR');
+    render();
+    checkAcoes();
+  }catch(e){$('content').innerHTML='<div class="err">Erro: '+e.message+'</div>'}
+}
+function setView(v){VIEW=v;FILT=null;
+  ['vday','vguia'].forEach(id=>$(id).classList.remove('active'));
+  $(v==='day'?'vday':'vguia').classList.add('active');
+  $('toolbar').style.display=v==='guia'?'none':'flex';
+  render();}
+function stepDay(d){DI=Math.min(Math.max(DI+d,0),DAYS.length-1);FILT=null;render()}
+function dayRows(){return ALL.filter(r=>r.data===DAYS[DI])}
+function render(){ VIEW==='day'?renderDay():renderGuia() }
+function renderDay(){
+  const rows=dayRows();
+  $('curday').textContent=(DAYS[DI]?br(DAYS[DI]):'—')+' ('+(rows[0]?.dia_semana||'').replace('-feira','')+')';
+  const k={TOTAL:rows.length,SERIO:0,GRAVE:0,INFRACAO:0,VERBAL:0,CONFERIR:0,SEM:0};
+  rows.forEach(r=>{if(isConf(r.categoria))k.CONFERIR++;else k[r.categoria]=(k[r.categoria]||0)+1});
+  const kc={TOTAL:'var(--brand)',SERIO:'var(--serio)',GRAVE:'var(--grave)',INFRACAO:'var(--infra)',VERBAL:'var(--verbal)',CONFERIR:'var(--conf)',SEM:'var(--sem)'};
+  $('kpis').innerHTML=Object.keys(k).filter(x=>x==='TOTAL'||k[x]>0).map(x=>
+    `<div class="kpi ${FILT===x?'active':''}" style="--kc:${kc[x]}" onclick="FILT=FILT==='${x}'?null:'${x}';render()">
+     <div class="n">${k[x]}</div><div class="l">${KL[x]}</div></div>`).join('');
+  let show=rows;
+  if(FILT&&FILT!=='TOTAL')show=show.filter(r=>FILT==='CONFERIR'?isConf(r.categoria):r.categoria===FILT);
+  show.sort((a,b)=>(ORD[a.categoria]-ORD[b.categoria])||a.nome.localeCompare(b.nome));
+  if(!show.length){$('content').innerHTML='<div class="empty">Nenhum registro neste dia/filtro.</div>';return}
+  $('content').innerHTML='<div class="grid">'+show.map(r=>{
+    const acao=(r.categoria!=='SEM'&&ACAO[r.categoria])?`<div class="acao">▸ ${ACAO[r.categoria]}</div>`:'';
+    return `<div class="card" style="--cc:${C[r.categoria]}">
+      <div class="chead"><div><div class="cname">${title(r.nome)}</div><div class="cunit">São Braz</div></div>
+      <span class="badge">${L[r.categoria]}</span></div>
+      <div class="mk">🕒 ${r.marcacoes_txt}</div>
+      <div class="jr">líq ${fmt(r.jornada_liquida_min)} · int ${r.intervalo_real_min??'—'}min · contr ${fmt(r.jornada_contratada_min)}${r.extra_min?' · +'+r.extra_min+'min':''}</div>
+      ${r.detalhe?`<div class="det">▸ ${r.detalhe}</div>`:''}
+      ${acao}</div>`}).join('')+'</div>';
+}
+function renderGuia(){
+  $('kpis').innerHTML='';
+  $('content').innerHTML=`
+<div class="rkexpl">📖 <b>Guia do gestor — São Braz.</b> Seu papel: garantir a operação certa no turno e avisar o RH no mesmo dia. Quem aplica documento disciplinar é o RH — você informa e confirma os fatos.</div>
+<div class="gcard"><div class="ghead" style="background:var(--serio)" onclick="this.parentElement.classList.toggle('open')">🔴 Intervalo abaixo do mínimo <span class="gtag">Art. 71 CLT</span></div>
+<div class="gbody"><p>Jornada 15:40–00:00 exige <b>60min de pausa completos</b>; Esther (10:15–16:40) exige 30min. Não existe tolerância: 59min já é violação e gera <b>advertência formal</b> (política da empresa).</p>
+<ol class="steps"><li>Organize o turno para TODOS pausarem o tempo cheio, todos os dias.</li><li>Se aconteceu, avise o RH no mesmo dia — eles aplicam a advertência.</li><li>Reincidência derruba o time: na 3ª advertência vem suspensão.</li></ol></div></div>
+<div class="gcard"><div class="ghead" style="background:var(--grave)" onclick="this.parentElement.classList.toggle('open')">🟠 Hora extra <span class="gtag">Art. 59 CLT</span></div>
+<div class="gbody"><ol class="steps"><li>Extra só com a sua autorização — e máx. 2h/dia.</li><li>Se alguém passou do horário sem você pedir, oriente na hora e avise o RH.</li><li>Saída 00:00 em ponto: fique de olho para o time não esticar.</li></ol></div></div>
+<div class="gcard"><div class="ghead" style="background:var(--infra)" onclick="this.parentElement.classList.toggle('open')">🟡 Falta de batida <span class="gtag">Portaria 671</span></div>
+<div class="gbody"><ol class="steps"><li>As 4 batidas do turno são obrigatórias (entrada, pausa, volta, saída).</li><li>Alguém esqueceu? Confirme o horário real e avise o RH para ajustar no Flash.</li><li>Cobre o hábito no briefing — reincidência gera advertência.</li></ol></div></div>
+<div class="gcard"><div class="ghead" style="background:var(--serio)" onclick="this.parentElement.classList.toggle('open')">🚫 Falta / não veio <span class="gtag">Lei 605/49</span></div>
+<div class="gbody"><ol class="steps"><li>Confirme o motivo com o funcionário; atestado tem 48h para chegar ao RH.</li><li>Sem justificativa: avise o RH (desconto do dia + DSR e medida disciplinar).</li><li>Terça a loja está fechada — sem batidas na terça é normal.</li></ol></div></div>
+<div class="gcard"><div class="ghead" style="background:var(--atest)" onclick="this.parentElement.classList.toggle('open')">🩺 Atestado <span class="gtag">como agir</span></div>
+<div class="gbody"><ol class="steps"><li>Receba, fotografe e mande pro RH no mesmo dia (eles conferem CRM/assinatura).</li><li>Atestado válido abona — não conte como falta.</li><li>Esther: atestado até 09/08, retorno previsto 10/08 no horário 10:15–16:40.</li></ol></div></div>
+<div class="gcard"><div class="ghead" style="background:var(--conf)" onclick="this.parentElement.classList.toggle('open')">🔎 "Conferir" no painel <span class="gtag">rotina</span></div>
+<div class="gbody"><ol class="steps"><li>Bateu diferente do combinado (15:40–00:00)? Me confirme a escala real do dia.</li><li>Vinicius em escala diferente: sempre informar a diretoria qual turno ele fez.</li><li>Rotina: abrir o painel de manhã, olhar os cards coloridos e responder o RH.</li></ol></div></div>`;
+}
+if('serviceWorker' in navigator)navigator.serviceWorker.register('sw.js').catch(()=>{});
+function askNotif(){
+  if(!('Notification' in window)){alert('Este navegador não suporta avisos. No iPhone: Compartilhar → Adicionar à Tela de Início, e abra pelo ícone.');return}
+  Notification.requestPermission().then(p=>{
+    if(p==='granted'){$('bellbtn').textContent='🔔 Avisos ativos';new Notification('Ponto São Braz',{body:'Avisos ativados!',icon:'icon.svg'})}
+  });
+}
+if('Notification' in window&&Notification.permission==='granted')setTimeout(()=>{const b=$('bellbtn');if(b)b.textContent='🔔 Avisos ativos'},500);
+function checkAcoes(){
+  const last=DAYS[DAYS.length-1]; if(!last)return;
+  const acoes=ALL.filter(r=>r.data===last&&['SERIO','GRAVE','INFRACAO','VERBAL'].includes(r.categoria));
+  const key='sb_seen_'+last;
+  if(acoes.length&&!localStorage.getItem(key)){
+    localStorage.setItem(key,'1');
+    const nomes=acoes.map(a=>a.nome.split(' ')[0]).join(', ');
+    if('Notification' in window&&Notification.permission==='granted'){
+      navigator.serviceWorker.getRegistration().then(reg=>{
+        const opts={body:acoes.length+' pendência(s) no ponto: '+nomes+'. Abra para ver o que fazer.',icon:'icon.svg',badge:'icon.svg'};
+        reg?reg.showNotification('⚠ Ponto São Braz '+last.split('-').reverse().join('/'),opts):new Notification('⚠ Ponto São Braz',opts);
+      });
+    }
+    document.title='('+acoes.length+') Ponto São Braz';
+  }
+  if(!acoes.length)document.title='Ponto São Braz · Cidadão do Mundo';
+}
+setInterval(loadAll, 15*60*1000);
+loadAll();
+</script></body></html>
